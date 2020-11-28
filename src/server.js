@@ -61,6 +61,27 @@ app.get("/pt/2016/mobile/actividades_evento/", (req, res) => {
   });
 });
 
+/**
+ * V2
+ */
+app.get("/v2/activities/", (req, res) => {
+  res.json([
+    {
+      name: "Activity A",
+      dateTimeStart: new Date(2018, 5, 5, 8, 30, 42, 11),
+      dateTimeEnd: new Date(2018, 5, 5, 10, 45, 42, 11),
+    },
+    {
+      name: "Activity B",
+      dateTimeStart: new Date(2018, 5, 6, 12, 30, 42, 11),
+      dateTimeEnd: new Date(2018, 5, 6, 14, 45, 42, 11),
+    },
+  ]);
+});
+
+/**
+ * V1
+ */
 app.get("/info/", (req, res) => {
   res.json({
     event: {
@@ -95,12 +116,14 @@ app.get("/info/", (req, res) => {
         {
           name: "One day ticket",
           description: ["Access day 1 event"],
-          price: "5€",
+          price: 5.0,
+          currency: "€",
         },
         {
           name: "Two day ticket",
           description: ["Access day 1 event", "Access day 2 event"],
-          price: "8€",
+          price: 8.0,
+          currency: "€",
         },
         {
           name: "Digital Deluxe Ticket",
@@ -109,7 +132,8 @@ app.get("/info/", (req, res) => {
             "Early access on the event",
             "Access to the backstage to meet the cosplayers",
           ],
-          price: "9.99€",
+          price: 9.99,
+          currency: "€",
         },
       ],
     },
